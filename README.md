@@ -132,53 +132,6 @@ projeto_api/
 
 
 
-# Diagrama ER – DevLab Project API (Mermaid)
-
-```mermaid
-erDiagram
-    PROJETO {
-        int id PK
-        string titulo
-        text descricao
-        string cliente
-        string status
-        date data_inicio
-        date data_fim_prevista
-    }
-
-    EQUIPE {
-        int id PK
-        string nome
-        text descricao
-        int projeto_id FK
-        int lider_id OneToOne
-    }
-
-    USER {
-        int id PK
-        string username
-        string email
-        string password
-    }
-
-    PROJETO ||--o{ EQUIPE : "possui"
-    EQUIPE }o--o{ USER : "membros"
-    EQUIPE ||--|| USER : "lider"
-    
----
-
-## 🎯 Explicação rápida
-- **Projeto (1) ↔ (N) Equipe** → um projeto pode ter várias equipes.  
-- **Equipe (N) ↔ (N) User (membros)** → uma equipe pode ter vários membros, e um usuário pode estar em várias equipes.  
-- **Equipe (1) ↔ (1) User (líder)** → uma equipe tem um líder único, e um usuário só pode liderar uma equipe.  
-
----
-```
-
-
-
-
-
 
 
 ---
@@ -238,8 +191,8 @@ erDiagram
 
 
 ```bash
-     git clone https://github.com/usuario/projeto_api.git
-     cd projeto_api
+     git clone [https://github.com/usuario/projeto_api.git](https://github.com/diegomo2/Projeto_integrador_gerencia_projetos.git)
+     cd Projeto_integrador_gerencia_projetos
 ```
 
   1. **Crie um ambiente virtual:**
@@ -274,7 +227,9 @@ erDiagram
      
 
      ```bash
+     python manage.py makemigrations
      python manage.py migrate
+     python manage.py createsuperuser
      python manage.py runserver
      ```
 
