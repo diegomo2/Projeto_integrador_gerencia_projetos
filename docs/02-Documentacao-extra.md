@@ -19,7 +19,7 @@
 
 ---
 
-## 🔎 Relacionamentos
+##  Relacionamentos
 
 - **Projeto (A) ↔ Equipe (B)** → **1:N**
 - **Equipe (B) ↔ User (C)** → **N:N** (membros)
