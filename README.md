@@ -66,10 +66,10 @@
 
   ## Estrutura do Projeto
   ```bash
-projeto_api/ 
+02-Gerencia_projetos/ 
 ├── manage.py 
 ├── requirements.txt 
-├── projeto/ 
+├── devlab/ 
 │ ├── settings.py 
 | │ ── urls.py 
 │ └── wsgi.py 
