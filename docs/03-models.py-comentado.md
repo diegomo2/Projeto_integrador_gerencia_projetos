@@ -4,7 +4,7 @@
 
 
 
-```
+```python
 from django.db import models
 from django.contrib.auth.models import User
 ```
@@ -16,7 +16,7 @@ from django.contrib.auth.models import User
 
 
 
-```
+```python
 class Projeto(models.Model):
 ```
 
@@ -25,7 +25,7 @@ class Projeto(models.Model):
 
 
 
-```
+```python
     STATUS_CHOICES = [
         ('planejado', 'Planejado'),
         ('andamento', 'Em andamento'),
@@ -39,7 +39,7 @@ class Projeto(models.Model):
 
 
 
-```
+```python
     titulo = models.CharField(max_length=100)
     descricao = models.TextField()
     cliente = models.CharField(max_length=100)
@@ -51,7 +51,7 @@ class Projeto(models.Model):
 
 
 
-```
+```python
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='planejado')
 ```
 
@@ -60,7 +60,7 @@ class Projeto(models.Model):
 
 
 
-```
+```python
     data_inicio = models.DateField()
     data_fim_prevista = models.DateField()
 ```
@@ -70,7 +70,7 @@ class Projeto(models.Model):
 
 
 
-```
+```python
     def __str__(self):
         return self.titulo
 ```
@@ -80,7 +80,7 @@ class Projeto(models.Model):
 
 
 
-```
+```python
     @property
     def participantes(self):
         """Retorna todos os usuários que participam das equipes do projeto."""
@@ -99,7 +99,7 @@ class Projeto(models.Model):
 
 
 
-```
+```python
 class Equipe(models.Model):
 ```
 
@@ -108,7 +108,7 @@ class Equipe(models.Model):
 
 
 
-```
+```python
     nome = models.CharField(max_length=100)
     descricao = models.TextField()
 ```
@@ -117,7 +117,7 @@ class Equipe(models.Model):
 
 
 
-```
+```python
     projeto = models.ForeignKey(Projeto, on_delete=models.CASCADE, related_name="equipes")
 ```
 
@@ -127,7 +127,7 @@ class Equipe(models.Model):
 
 
 
-```
+```python
     lider = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="lidera_equipe")
 ```
 
@@ -138,7 +138,7 @@ class Equipe(models.Model):
 
 
 
-```
+```python
     membros = models.ManyToManyField(User, related_name="equipes")
 ```
 
@@ -147,7 +147,7 @@ class Equipe(models.Model):
 
 
 
-```
+```python
     def __str__(self):
         return f"{self.nome} ({self.projeto.titulo})"
 ```
